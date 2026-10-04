@@ -4,3 +4,4 @@ Thumbs.db
 
 # eboardから取ったページのキャッシュ（6MB。_fetch.py を流せば作り直せる）
 _src/pages/
+_cmp/

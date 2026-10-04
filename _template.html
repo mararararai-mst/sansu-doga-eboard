@@ -18,7 +18,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://mararararai-mst.github.io/sansu-doga-eboard/ogp.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232b5c8a'/%3E%3Ctext x='16' y='23' font-size='19' text-anchor='middle' fill='%23fff' font-family='sans-serif'%3E%E5%8B%95%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d6b53'/%3E%3Ctext x='16' y='23' font-size='19' text-anchor='middle' fill='%23fff' font-family='sans-serif'%3E%E5%8B%95%3C/text%3E%3C/svg%3E">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CollectionPage",
  "name":"小学校算数 動画系統表",
@@ -37,8 +37,8 @@
 @font-face{font-family:"ZenMaruSubset";src:local("Zen Maru Gothic Bold"),local("ZenMaruGothic-Bold"),url("font/ZenMaruGothic-Bold.subset.woff2") format("woff2");font-weight:600 900;font-style:normal;font-display:swap}
 :root{
   --ink:#1f2429; --mute:#6b7480; --line:#cdd3da; --bg:#fff; --head:#f4f6f8;
-  --chip-line:#8fa3b8; --chip-ink:#173a5e; --chip-bg:#fff; --chip-hover:#eaf1f9;
-  --badge:#2b5c8a; --accent:#2b5c8a;
+  --chip-line:#8fa3b8; --chip-ink:#123f31; --chip-bg:#fff; --chip-hover:#e6f2ed;
+  --badge:#1d6b53; --accent:#1d6b53;
   --tintA:#eef3f8; --tintB:#eef6ee; --tintC:#fbf5e8; --tintD:#f2f2f2; --tintL:#f7eef2;
   --font:"ZenMaruSubset","Zen Maru Gothic","Hiragino Maru Gothic ProN","Yu Gothic UI","Hiragino Sans",Meiryo,system-ui,sans-serif;
 }
@@ -223,7 +223,6 @@ b,strong,.chip .n,.tl .go{font-weight:700}
   <span class="it"><b>__LEG1__</b>__LEG2__</span>
   <span class="sep"></span>
   <span class="it"><span class="chip" style="display:inline-flex;width:auto;min-height:0;margin:0"><span class="t">__UNIT__</span><span class="n">6</span></span>動画あり（数字は本数）</span>
-  <span class="it"><span class="chip empty" style="display:inline-flex;width:auto;min-height:0;margin:0"><span class="t">__UNIT__</span></span>__LEG3__</span>
   <span class="sep"></span>
   <span class="note">すべて無料・登録なしで見られます</span>
   <span id="hits"></span>
@@ -454,7 +453,7 @@ q.addEventListener("input", () => {
   document.querySelectorAll(".chip[data-key]").forEach(el => {
     if (!v) { el.classList.remove("hit"); return; }
     const { ch } = locate(el.dataset.key);
-    const text = norm(ch.c + " " + ch.apps.map(k => DATA.apps[k].name + " " + DATA.apps[k].sub).join(" "));
+    const text = norm(ch.c + " " + (ch.alt || "") + " " + ch.apps.map(k => DATA.apps[k].name + " " + DATA.apps[k].sub).join(" "));
     const hit = text.includes(v);
     el.classList.toggle("hit", hit); if (hit) n.add(el.dataset.key);
   });
