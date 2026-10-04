@@ -290,10 +290,9 @@ DATA.groups.forEach((grp, gi) => {
 h += "</tbody>";
 tbl.innerHTML = h;
 
-// ---- boards（3つの表を行き来）
+// ---- boards（表を行き来する。よそのリポジトリの表は href に全部のURLを書く）
 const nav = document.getElementById("boards");
-if (!(DATA.boards && DATA.boards.length)) nav.hidden = true;
-else {
+if (DATA.boards && DATA.boards.length) {
   nav.innerHTML = '<span class="lbl">ほかの表</span>' + DATA.boards.map(b =>
     `<a href="${esc(b.href)}"${b.href === DATA.self ? ' aria-current="page"' : ""}>${esc(b.label)}</a>`).join("");
 } else nav.hidden = true;

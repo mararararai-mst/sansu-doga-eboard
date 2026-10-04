@@ -6,7 +6,7 @@
   _template.html          ひな形
   → index.html と 日本語名のコピー（フォント埋め込みの1枚もの）
 """
-import base64, json, sys
+import base64, json, re, shutil, subprocess, sys, tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -42,6 +42,24 @@ def card(key):
     sub = v["min"].lstrip("0")        # 単元名はパネルの見出しに出ているので時間だけ
     return {"name": v["name"], "sub": sub, "app": V % (cid, n),
             "quiz": Q % (cid, n) if v["q"] else "", "q": v["q"]}
+
+
+def check_js(html):
+    """書き出すHTMLの中のJavaScriptが文法として通るか（node があるときだけ）。
+    ここを素通りさせると、表が1つも出ないページをそのまま公開してしまう。"""
+    node = shutil.which("node")
+    if not node:
+        print("  ※ node が無いのでJSの文法チェックは飛ばした")
+        return
+    js = re.findall(r"<script>([\s\S]*?)</script>", html)
+    if not js:
+        sys.exit("NG ひな形に <script> が無い")
+    with tempfile.TemporaryDirectory() as d:
+        f = Path(d) / "page.js"
+        f.write_text("\n".join(js), encoding="utf-8")
+        r = subprocess.run([node, "--check", str(f)], capture_output=True, text=True)
+    if r.returncode:
+        sys.exit("NG JSの文法エラー\n" + (r.stderr or r.stdout))
 
 
 def main():
@@ -88,6 +106,7 @@ def main():
                         "__NAPPS__", "__NCHIPS__", "__NUNITS__") if t in html]
     if left:
         sys.exit("NG 置き換え残り: %s" % left)
+    check_js(html)
     (HERE / OUT).write_text(html, encoding="utf-8")
 
     # 日本語名の配布用コピー。フォントを埋め込んだ1枚もの（学校のフィルタでURLが開けないとき用）。
