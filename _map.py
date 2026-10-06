@@ -219,7 +219,7 @@ def main():
     cfg = {
         "_note": "系統（領域・行・戻り先）は 文科省『小学校学習指導要領（平成29年告示）解説 算数編』"
                  "第1章 図1（pp.12-15）にもとづく。どの単元をどの行に置くかは あらい の判断で、"
-                 "eboard公式の分類ではない。動画のデータは _fetch.py が eboard.jp から取得（_src/eboard_sansu.json）。",
+                 "eboard公式の分類ではない。",
         "grades": G,
         "colHead": "領域／系統",
         "chainTitle": "この系統をたどる（上が下の学年）",

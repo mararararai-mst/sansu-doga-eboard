@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """eboard 動画系統表ビルド
 
-  _src/eboard_sansu.json  eboard.jp から取った単元・動画（_fetch.py）
+  _src/eboard_sansu.json  単元と動画の一覧（手元のみ）
   keito.json              系統（枠組み）＋動画の当てはめ（_map.py）
   _template.html          ひな形
   → index.html と 日本語名のコピー（フォント埋め込みの1枚もの）
