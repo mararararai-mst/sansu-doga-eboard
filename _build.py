@@ -193,7 +193,7 @@ def handover(cfg, tpl, apps, nchip):
                     rows.append(",".join('"%s"' % x for x in (
                         g["name"].replace("　", " "), r["name"], grade, ch["c"],
                         cid, UNITS[cid]["title"], str(len(ch["apps"])))))
-    (out / "わりあて一覧.csv").write_text("﻿" + "\n".join(rows), encoding="utf-8")
+    (out / "wariate.csv").write_text("﻿" + "\n".join(rows), encoding="utf-8")
 
     (out / "README.txt").write_text(README, encoding="utf-8")
     print("   渡す用 -> handover/（%d件の割り当て）" % (len(rows) - 1))
@@ -215,7 +215,7 @@ sansu-doga-keito.html   表そのもの。1ファイルで動きます。
 keito.json              系統の枠と、どの単元をどこに置いたかのデータ。
                         表を作り直すときはこれを直します。
 
-わりあて一覧.csv        同じ内容を人が読める形にしたもの。
+wariate.csv             同じ内容を人が読める形にしたもの（割り当て一覧）。
                         割り当てを見直すときはこちらが早いです。
 
 README.txt              このファイル。
