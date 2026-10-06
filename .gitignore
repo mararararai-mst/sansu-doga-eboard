@@ -1,7 +1,11 @@
 __pycache__/
 *.pyc
 Thumbs.db
-
-# eboardから取ったページのキャッシュ（6MB。_fetch.py を流せば作り直せる）
-_src/pages/
 _cmp/
+
+# NPO法人eboardさんの依頼（2026-10-06 杉山さん）により、
+# 取得の具体的なやり方と取得結果はリポジトリに入れない。手元には残す。
+_fetch.py
+_linkcheck.py
+_src/
+eboardへの問い合わせ文.txt
